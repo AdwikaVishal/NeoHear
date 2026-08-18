@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.audio.pipeline.SnrClassifierTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:25" hostname="Apples-MacBook-Air.local" time="0.005">
+  <properties/>
+  <testcase name="pureComputeNoiseFloorRms_dampedSignal" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="classify_withFixture_referFixture" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.001"/>
+  <testcase name="classificationResult_hasAllFields" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="classify_lowSnr_refers" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="classify_withFixture_passFixture" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.001"/>
+  <testcase name="classify_withFixture_borderlineFixture" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.001"/>
+  <testcase name="classify_highSnr_passes" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="classify_borderline_repeats" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="pureComputeNoiseFloorRms_uniformSignal" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.001"/>
+  <testcase name="pureComputeRms_emptyArray" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="classify_customThresholds" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="pureComputeRms_silence" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="classify_returnsNonNegativeSnr" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.001"/>
+  <testcase name="pureComputeRms_knownValues" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="pureComputeRms_singleSample" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <testcase name="pureComputeRms_uniformSignal" classname="com.neohear.audio.pipeline.SnrClassifierTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

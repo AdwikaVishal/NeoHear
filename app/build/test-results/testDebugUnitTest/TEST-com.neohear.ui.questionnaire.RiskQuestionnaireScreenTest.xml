@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:31" hostname="Apples-MacBook-Air.local" time="1.457">
+  <properties/>
+  <testcase name="resultScreen_highRisk_showsHighRiskLabel" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="1.104"/>
+  <testcase name="resultScreen_lowRisk_doesNotShowImportantNotice" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.043"/>
+  <testcase name="resultScreen_elevatedRisk_showsElevatedRiskLabel" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.038"/>
+  <testcase name="resultScreen_highRisk_showsImportantNotice" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.036"/>
+  <testcase name="resultScreen_showsSaveAndFinishButton" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.038"/>
+  <testcase name="resultScreen_lowRisk_showsLowRiskLabel" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.039"/>
+  <testcase name="resultScreen_showsSkipButton" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.034"/>
+  <testcase name="resultScreen_highRisk_showsWarningMessage" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.033"/>
+  <testcase name="resultScreen_lowRisk_doesNotShowWarningMessage" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.029"/>
+  <testcase name="resultScreen_elevatedRisk_showsWarningMessage" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.032"/>
+  <testcase name="resultScreen_showsRetakeButton" classname="com.neohear.ui.questionnaire.RiskQuestionnaireScreenTest" time="0.031"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

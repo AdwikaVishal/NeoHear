@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:25" hostname="Apples-MacBook-Air.local" time="0.011">
+  <properties/>
+  <testcase name="generate_reproducibleWithSeed" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.007"/>
+  <testcase name="generate_differentSampleRate" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.001"/>
+  <testcase name="computeLabel_borderline" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.0"/>
+  <testcase name="computeLabel_refer" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.0"/>
+  <testcase name="generate_highSnr_producesStrongerSignal" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.001"/>
+  <testcase name="generate_zeroAmplitude_procesAllNoise" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.001"/>
+  <testcase name="computeLabel_pass" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.0"/>
+  <testcase name="generate_differentSeedsProduceDifferentWaveforms" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.001"/>
+  <testcase name="generate_returnsCorrectLength" classname="com.neohear.audio.waveform.SyntheticOaeGeneratorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

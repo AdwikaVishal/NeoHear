@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.audio.pipeline.StimulusGeneratorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:25" hostname="Apples-MacBook-Air.local" time="0.003">
+  <properties/>
+  <testcase name="generateClick_delegatesCorrectly" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.001"/>
+  <testcase name="generateDp_delegatesCorrectly" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.0"/>
+  <testcase name="pureClick_emptyBuffer" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.0"/>
+  <testcase name="pureClick_stimulusLength" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.0"/>
+  <testcase name="pureDp_stimulusLength" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.0"/>
+  <testcase name="pureDp_twoTonesSum" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.0"/>
+  <testcase name="pureDp_sinusoidalOutput" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.0"/>
+  <testcase name="pureClick_firstSampleIsOne" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.001"/>
+  <testcase name="pureClick_restAreZeros" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.001"/>
+  <testcase name="pureDp_zeroAmplitude" classname="com.neohear.audio.pipeline.StimulusGeneratorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

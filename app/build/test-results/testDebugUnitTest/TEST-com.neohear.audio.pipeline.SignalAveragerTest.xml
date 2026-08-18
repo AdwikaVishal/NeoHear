@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.audio.pipeline.SignalAveragerTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:25" hostname="Apples-MacBook-Air.local" time="0.005">
+  <properties/>
+  <testcase name="pureAverage_emptyInput" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.0"/>
+  <testcase name="pureAverage_singleBuffer" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.001"/>
+  <testcase name="average_noisyRepetitions_reducesVariance" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.002"/>
+  <testcase name="pureAverage_unequalLengths_usesShortest" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.001"/>
+  <testcase name="pureAverage_twoBuffers" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.0"/>
+  <testcase name="average_multipleRepetitions_averagesCorrectly" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.0"/>
+  <testcase name="pureAverage_threeBuffers" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.0"/>
+  <testcase name="pureAverage_singleBuffer_copiesOriginal" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.0"/>
+  <testcase name="average_singleRepetition_returnsCopy" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.0"/>
+  <testcase name="average_emptyList_returnsNull" classname="com.neohear.audio.pipeline.SignalAveragerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.audio.pipeline.FullPipelineTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:25" hostname="Apples-MacBook-Air.local" time="0.086">
+  <properties/>
+  <testcase name="pipeline_producesValidSnrValues" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.049"/>
+  <testcase name="borderlineFixture2_classifiesAsRepeat" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.004"/>
+  <testcase name="referFixture2_classifiesAsRefer" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.002"/>
+  <testcase name="passFixture_classifiesAsPass" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.001"/>
+  <testcase name="borderlineFixture_classifiesAsRepeat" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.001"/>
+  <testcase name="stimulusGenerate_classifyRoundTrip" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.001"/>
+  <testcase name="allSixFixtures_classifyCorrectly" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.025"/>
+  <testcase name="passFixture2_classifiesAsPass" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.001"/>
+  <testcase name="referFixture_classifiesAsRefer" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.001"/>
+  <testcase name="averagingMultipleReps_improvesOrMaintainsSnr" classname="com.neohear.audio.pipeline.FullPipelineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

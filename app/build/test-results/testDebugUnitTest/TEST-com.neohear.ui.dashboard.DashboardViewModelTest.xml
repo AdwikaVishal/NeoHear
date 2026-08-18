@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.ui.dashboard.DashboardViewModelTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:30" hostname="Apples-MacBook-Air.local" time="0.275">
+  <properties/>
+  <testcase name="observeModeCounts_filtersByTimeWindow" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.02"/>
+  <testcase name="dashboardState_dailyCounts" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.011"/>
+  <testcase name="dashboardState_referralCounts" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.011"/>
+  <testcase name="selectPeriod_updatesSelectedPeriod" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.047"/>
+  <testcase name="dashboardState_computesRates_correctly" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.021"/>
+  <testcase name="observeAllTestSessions_returnsAll" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.042"/>
+  <testcase name="dashboardState_zeroTests_noDivisionByZero" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.023"/>
+  <testcase name="observeDailyTestCounts_groupsCorrectly" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.037"/>
+  <testcase name="observeAllReferrals_returnsAll" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.035"/>
+  <testcase name="selectedPeriod_label_isCorrect" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.012"/>
+  <testcase name="dashboardState_modeCounts" classname="com.neohear.ui.dashboard.DashboardViewModelTest" time="0.015"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.data.PatientDaoTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:30" hostname="Apples-MacBook-Air.local" time="0.119">
+  <properties/>
+  <testcase name="deletePatient_cascadesToReferrals" classname="com.neohear.data.PatientDaoTest" time="0.021"/>
+  <testcase name="updateModifiesFields" classname="com.neohear.data.PatientDaoTest" time="0.019"/>
+  <testcase name="insertAndReadById" classname="com.neohear.data.PatientDaoTest" time="0.018"/>
+  <testcase name="deletePatient_cascadesToTestSessions" classname="com.neohear.data.PatientDaoTest" time="0.015"/>
+  <testcase name="deleteRemovesPatient" classname="com.neohear.data.PatientDaoTest" time="0.017"/>
+  <testcase name="getAllPatients_returnsDescendingByCreatedAt" classname="com.neohear.data.PatientDaoTest" time="0.029"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

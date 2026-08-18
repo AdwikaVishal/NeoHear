@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.reminder.FollowUpReminderTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:30" hostname="Apples-MacBook-Air.local" time="0.205">
+  <properties/>
+  <testcase name="multipleOverdueReferrals_allTriggerReminders" classname="com.neohear.reminder.FollowUpReminderTest" time="0.09"/>
+  <testcase name="completedReferral_doesNotTriggerReminder" classname="com.neohear.reminder.FollowUpReminderTest" time="0.021"/>
+  <testcase name="pendingReferral_notYetOverdue_doesNotTriggerReminder" classname="com.neohear.reminder.FollowUpReminderTest" time="0.015"/>
+  <testcase name="scheduledReferral_doesNotTriggerReminder" classname="com.neohear.reminder.FollowUpReminderTest" time="0.017"/>
+  <testcase name="pendingReferral_overdue_triggersReminder" classname="com.neohear.reminder.FollowUpReminderTest" time="0.016"/>
+  <testcase name="simulatedSmsLog_containsCorrectFormat" classname="com.neohear.reminder.FollowUpReminderTest" time="0.015"/>
+  <testcase name="lostToFollowUp_doesNotTriggerReminder" classname="com.neohear.reminder.FollowUpReminderTest" time="0.015"/>
+  <testcase name="pendingReferral_exactlyAtThreshold_triggersReminder" classname="com.neohear.reminder.FollowUpReminderTest" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

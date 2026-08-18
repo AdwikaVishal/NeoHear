@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.ui.referrals.ReferralDaoAndViewModelTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:32" hostname="Apples-MacBook-Air.local" time="0.072">
+  <properties/>
+  <testcase name="getPendingReferralsOlderThan_onlyReturnsOldPending" classname="com.neohear.ui.referrals.ReferralDaoAndViewModelTest" time="0.013"/>
+  <testcase name="referralWithFollowUpLog_preservesLog" classname="com.neohear.ui.referrals.ReferralDaoAndViewModelTest" time="0.011"/>
+  <testcase name="getAllReferrals_returnsAll" classname="com.neohear.ui.referrals.ReferralDaoAndViewModelTest" time="0.012"/>
+  <testcase name="updateReferralStatus_persistsNewStatus" classname="com.neohear.ui.referrals.ReferralDaoAndViewModelTest" time="0.01"/>
+  <testcase name="getIncompleteReferrals_excludesCompleted" classname="com.neohear.ui.referrals.ReferralDaoAndViewModelTest" time="0.013"/>
+  <testcase name="addFollowUpNote_appendsToLog" classname="com.neohear.ui.referrals.ReferralDaoAndViewModelTest" time="0.013"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

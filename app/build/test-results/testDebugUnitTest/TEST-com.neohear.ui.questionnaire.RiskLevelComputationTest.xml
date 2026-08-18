@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.ui.questionnaire.RiskLevelComputationTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:31" hostname="Apples-MacBook-Air.local" time="0.011">
+  <properties/>
+  <testcase name="inUteroInfection_returnsHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.003"/>
+  <testcase name="unknownAnswerKey_ignored" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="craniofacial_returnsHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="oneMinorFactor_returnsLow" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.001"/>
+  <testcase name="majorFactorWithMinorFactors_stillHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="catalogHasTwoMinorFactors" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="warningMessage_containsKeyPhrases" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.002"/>
+  <testcase name="multipleMajorFactors_returnsHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="allNoAnswers_returnsLow" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="yesUpperCase_treatedAsYes" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="twoMinorFactorsNoMajor_returnsElevated" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="catalogHasNineFactors" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.001"/>
+  <testcase name="catalogHasSevenMajorFactors" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="ototoxicMedication_returnsHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="lowRiskSummary_doesNotContainWarningMessage" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.001"/>
+  <testcase name="allFactorIdsAreUnique" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="yesCaseInsensitive_treatedAsYes" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="emptyAnswers_returnsLow" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.001"/>
+  <testcase name="hyperbilirubinemia_returnsHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="lowBirthWeight_returnsHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="twoMinorFactors_returnsElevated" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="elevatedRiskSummary_containsWarningMessage" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="highRiskSummary_containsWarningMessage" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="familyHistory_returnsHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="nicuStay_returnsHigh" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.0"/>
+  <testcase name="allFactorQuestionsAreNonBlank" classname="com.neohear.ui.questionnaire.RiskLevelComputationTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

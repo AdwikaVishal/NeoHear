@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.neohear.ui.screening.ScreeningViewModelTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-08-17T10:57:32" hostname="Apples-MacBook-Air.local" time="0.124">
+  <properties/>
+  <testcase name="toggleDemoMode_togglesState" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.01"/>
+  <testcase name="initialState_isPatientEntry" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.005"/>
+  <testcase name="handleResult_referStage1_transitionsToStage2" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.022"/>
+  <testcase name="fullHappyPath_passOnStage1" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.009"/>
+  <testcase name="proceedFromDeviceCheck_probeConnected_transitionsToPreTestCheck" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.007"/>
+  <testcase name="startNewScreening_resetsToPatientEntry" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.007"/>
+  <testcase name="goBack_fromDeviceCheck_returnsToPatientEntry" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.005"/>
+  <testcase name="submitPatientEntry_validData_transitionsToDeviceCheck" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.007"/>
+  <testcase name="fullReferPath_referToReferral" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.009"/>
+  <testcase name="submitPatientEntry_emptyName_showsError" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.01"/>
+  <testcase name="simulateProbeCheck_setsProbeConnected" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.006"/>
+  <testcase name="proceedFromDeviceCheck_probeNotConnected_doesNothing" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.007"/>
+  <testcase name="setDemoMode_setsState" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.006"/>
+  <testcase name="runPreTestCheck_demoMode_setsNoiseOk" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.005"/>
+  <testcase name="submitPatientEntry_emptyDob_showsError" classname="com.neohear.ui.screening.ScreeningViewModelTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

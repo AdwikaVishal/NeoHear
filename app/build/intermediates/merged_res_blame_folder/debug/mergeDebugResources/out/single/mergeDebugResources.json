@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.neohear.app-debug-59:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.neohear.app-main-61:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.neohear.app-debug-59:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.neohear.app-main-61:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    }
+]
