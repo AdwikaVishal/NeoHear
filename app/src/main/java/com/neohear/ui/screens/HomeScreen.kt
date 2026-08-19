@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Assessment
 import androidx.compose.material.icons.filled.Hearing
+import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -30,7 +31,8 @@ import com.neohear.ui.screening.DemoModeBanner
 fun HomeScreen(
     isDemoMode: Boolean = false,
     onStartScreening: () -> Unit = {},
-    onStartQuestionnaire: () -> Unit = {}
+    onStartQuestionnaire: () -> Unit = {},
+    onStartCryAnalysis: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -100,11 +102,40 @@ fun HomeScreen(
             )
         }
 
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // Experimental: Cry Acoustic Assessment
+        OutlinedButton(
+            onClick = onStartCryAnalysis,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Mic,
+                contentDescription = null,
+                modifier = Modifier.padding(end = 8.dp)
+            )
+            Column {
+                Text(
+                    text = "Cry Acoustic Assessment",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Text(
+                    text = "Experimental",
+                    fontSize = 10.sp,
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
+        }
+
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
             text = "Screening: acoustic OAE test with ear-tip probe.\n" +
-                    "Questionnaire: risk-factor checklist (no probe needed).",
+                    "Questionnaire: risk-factor checklist (no probe needed).\n" +
+                    "Cry Assessment: experimental acoustic analysis of infant cry.",
             fontSize = 12.sp,
             textAlign = TextAlign.Center,
             lineHeight = 18.sp,

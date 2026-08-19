@@ -37,6 +37,8 @@ object NativeBridge {
 
     private external fun nativeComputeNoiseFloorRms(data: FloatArray): Double
 
+    private external fun nativeAnalyzeCry(audio: FloatArray, sampleRate: Int): FloatArray
+
     // ── Public API (auto-selects JNI or pure-Kotlin) ──────────────────────
 
     fun generateClickStimulus(sampleRateHz: Int, numSamples: Int): FloatArray {
@@ -85,6 +87,22 @@ object NativeBridge {
             nativeComputeNoiseFloorRms(data)
         } else {
             com.neohear.audio.pipeline.SnrClassifier.pureComputeNoiseFloorRms(data)
+        }
+    }
+
+    /**
+     * EXPERIMENTAL — Analyze cry audio and return extracted features.
+     *
+     * Returns a FloatArray of 7 elements:
+     * [avgPitchHz, pitchStdDev, avgEnergyDb, jitter, shimmer, voicingRatio, riskFlags]
+     *
+     * Falls back to a zero-filled array if native library is unavailable.
+     */
+    fun analyzeCry(audio: FloatArray, sampleRate: Int): FloatArray {
+        return if (nativeAvailable) {
+            nativeAnalyzeCry(audio, sampleRate)
+        } else {
+            FloatArray(7)
         }
     }
 

@@ -11,6 +11,8 @@ import androidx.room.util.DBUtil;
 import androidx.room.util.TableInfo;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
+import com.neohear.data.dao.CryAnalysisDao;
+import com.neohear.data.dao.CryAnalysisDao_Impl;
 import com.neohear.data.dao.DashboardDao;
 import com.neohear.data.dao.DashboardDao_Impl;
 import com.neohear.data.dao.PatientDao;
@@ -51,10 +53,12 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile SyncDao _syncDao;
 
+  private volatile CryAnalysisDao _cryAnalysisDao;
+
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `patients` (`id` TEXT NOT NULL, `displayNameOrCode` TEXT NOT NULL, `dob` INTEGER NOT NULL, `sex` TEXT, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`id`))");
@@ -66,8 +70,10 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("CREATE TABLE IF NOT EXISTS `risk_questionnaire_responses` (`id` TEXT NOT NULL, `patientId` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `answers` TEXT NOT NULL, `riskLevel` TEXT NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`patientId`) REFERENCES `patients`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
         db.execSQL("CREATE INDEX IF NOT EXISTS `index_risk_questionnaire_responses_patientId` ON `risk_questionnaire_responses` (`patientId`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `sync_records` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `entity_id` TEXT NOT NULL, `entity_type` TEXT NOT NULL, `is_demo` INTEGER NOT NULL, `state` TEXT NOT NULL, `created_at` INTEGER NOT NULL, `last_attempt_at` INTEGER)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `cry_analyses` (`id` TEXT NOT NULL, `patientId` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `avgPitchHz` REAL NOT NULL, `pitchStdDev` REAL NOT NULL, `avgEnergyDb` REAL NOT NULL, `jitter` REAL NOT NULL, `shimmer` REAL NOT NULL, `voicingRatio` REAL NOT NULL, `riskFlags` INTEGER NOT NULL, `isExperimental` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`patientId`) REFERENCES `patients`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_cry_analyses_patientId` ON `cry_analyses` (`patientId`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '680f687a33e1149259e220adc8c7191b')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4851b94555f699769ab17a33b5de0151')");
       }
 
       @Override
@@ -77,6 +83,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("DROP TABLE IF EXISTS `referrals`");
         db.execSQL("DROP TABLE IF EXISTS `risk_questionnaire_responses`");
         db.execSQL("DROP TABLE IF EXISTS `sync_records`");
+        db.execSQL("DROP TABLE IF EXISTS `cry_analyses`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -214,9 +221,32 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoSyncRecords + "\n"
                   + " Found:\n" + _existingSyncRecords);
         }
+        final HashMap<String, TableInfo.Column> _columnsCryAnalyses = new HashMap<String, TableInfo.Column>(11);
+        _columnsCryAnalyses.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("patientId", new TableInfo.Column("patientId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("avgPitchHz", new TableInfo.Column("avgPitchHz", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("pitchStdDev", new TableInfo.Column("pitchStdDev", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("avgEnergyDb", new TableInfo.Column("avgEnergyDb", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("jitter", new TableInfo.Column("jitter", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("shimmer", new TableInfo.Column("shimmer", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("voicingRatio", new TableInfo.Column("voicingRatio", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("riskFlags", new TableInfo.Column("riskFlags", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCryAnalyses.put("isExperimental", new TableInfo.Column("isExperimental", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysCryAnalyses = new HashSet<TableInfo.ForeignKey>(1);
+        _foreignKeysCryAnalyses.add(new TableInfo.ForeignKey("patients", "CASCADE", "NO ACTION", Arrays.asList("patientId"), Arrays.asList("id")));
+        final HashSet<TableInfo.Index> _indicesCryAnalyses = new HashSet<TableInfo.Index>(1);
+        _indicesCryAnalyses.add(new TableInfo.Index("index_cry_analyses_patientId", false, Arrays.asList("patientId"), Arrays.asList("ASC")));
+        final TableInfo _infoCryAnalyses = new TableInfo("cry_analyses", _columnsCryAnalyses, _foreignKeysCryAnalyses, _indicesCryAnalyses);
+        final TableInfo _existingCryAnalyses = TableInfo.read(db, "cry_analyses");
+        if (!_infoCryAnalyses.equals(_existingCryAnalyses)) {
+          return new RoomOpenHelper.ValidationResult(false, "cry_analyses(com.neohear.data.entity.CryAnalysis).\n"
+                  + " Expected:\n" + _infoCryAnalyses + "\n"
+                  + " Found:\n" + _existingCryAnalyses);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "680f687a33e1149259e220adc8c7191b", "45ebdd5f469075209df061c509e3706a");
+    }, "4851b94555f699769ab17a33b5de0151", "1ec9036e21f2fdaa1c2723fbfe456d2e");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -227,7 +257,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "patients","test_sessions","referrals","risk_questionnaire_responses","sync_records");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "patients","test_sessions","referrals","risk_questionnaire_responses","sync_records","cry_analyses");
   }
 
   @Override
@@ -248,6 +278,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       _db.execSQL("DELETE FROM `referrals`");
       _db.execSQL("DELETE FROM `risk_questionnaire_responses`");
       _db.execSQL("DELETE FROM `sync_records`");
+      _db.execSQL("DELETE FROM `cry_analyses`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -271,6 +302,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     _typeConvertersMap.put(RiskQuestionnaireResponseDao.class, RiskQuestionnaireResponseDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(DashboardDao.class, DashboardDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(SyncDao.class, SyncDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(CryAnalysisDao.class, CryAnalysisDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -369,6 +401,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _syncDao = new SyncDao_Impl(this);
         }
         return _syncDao;
+      }
+    }
+  }
+
+  @Override
+  public CryAnalysisDao cryAnalysisDao() {
+    if (_cryAnalysisDao != null) {
+      return _cryAnalysisDao;
+    } else {
+      synchronized(this) {
+        if(_cryAnalysisDao == null) {
+          _cryAnalysisDao = new CryAnalysisDao_Impl(this);
+        }
+        return _cryAnalysisDao;
       }
     }
   }

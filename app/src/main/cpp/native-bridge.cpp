@@ -138,3 +138,28 @@ Java_com_neohear_audio_NativeBridge_nativeComputeNoiseFloorRms(
     releaseFloatArrayElements(env, data, elems);
     return rms;
 }
+
+// ── EXPERIMENTAL: Cry acoustic analysis ──────────────────────────────────
+
+extern "C" JNIEXPORT jfloatArray JNICALL
+Java_com_neohear_audio_NativeBridge_nativeAnalyzeCry(
+        JNIEnv *env,
+        jobject /* this */,
+        jfloatArray audioArray,
+        jint sampleRate) {
+    jint len = env->GetArrayLength(audioArray);
+    if (len < 100) {
+        jfloatArray empty = env->NewFloatArray(7);
+        return empty;
+    }
+
+    float* audio = getFloatArrayElements(env, audioArray);
+
+    jfloatArray result = env->NewFloatArray(7);
+    jfloat features[7];
+    nehear::dsp::analyzeCry(audio, len, sampleRate, features);
+    env->SetFloatArrayRegion(result, 0, 7, features);
+
+    releaseFloatArrayElements(env, audioArray, audio);
+    return result;
+}

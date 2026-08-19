@@ -6,11 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.neohear.data.converter.Converters
+import com.neohear.data.dao.CryAnalysisDao
 import com.neohear.data.dao.DashboardDao
 import com.neohear.data.dao.PatientDao
 import com.neohear.data.dao.ReferralDao
 import com.neohear.data.dao.RiskQuestionnaireResponseDao
 import com.neohear.data.dao.TestSessionDao
+import com.neohear.data.entity.CryAnalysis
 import com.neohear.data.entity.Patient
 import com.neohear.data.entity.Referral
 import com.neohear.data.entity.RiskQuestionnaireResponse
@@ -24,9 +26,10 @@ import net.zetetic.database.sqlcipher.SupportOpenHelperFactory
         TestSession::class,
         Referral::class,
         RiskQuestionnaireResponse::class,
-        com.neohear.data.entity.SyncRecord::class
+        com.neohear.data.entity.SyncRecord::class,
+        CryAnalysis::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -38,6 +41,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun riskQuestionnaireResponseDao(): RiskQuestionnaireResponseDao
     abstract fun dashboardDao(): DashboardDao
     abstract fun syncDao(): com.neohear.data.dao.SyncDao
+    abstract fun cryAnalysisDao(): CryAnalysisDao
 
     companion object {
 

@@ -14,4 +14,7 @@ target_include_directories(neohear PRIVATE
 
 find_library(log-lib log)
 
-target_link_libraries(neohear ${log-lib})
+target_link_libraries(neohear
+    ${log-lib}
+    c++_shared
+)

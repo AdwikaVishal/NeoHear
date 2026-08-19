@@ -202,6 +202,25 @@ class ScreeningViewModel(
         }
     }
 
+    fun submitPatientDetails(name: String, dob: Date, ear: Ear) {
+        val patient = Patient(
+            id = UUID.randomUUID(),
+            displayNameOrCode = name.trim(),
+            dob = dob,
+            sex = null
+        )
+
+        _state.value = ScreeningState.DeviceCheck(
+            patientId = patient.id,
+            displayName = patient.displayNameOrCode,
+            ear = ear
+        )
+
+        viewModelScope.launch {
+            patientDao.insert(patient)
+        }
+    }
+
     // ── Device Check ─────────────────────────────────────────────────────
 
     fun simulateProbeCheck() {

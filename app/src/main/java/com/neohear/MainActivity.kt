@@ -48,6 +48,8 @@ import com.neohear.ui.screens.DashboardScreen
 import com.neohear.ui.screens.DisclaimerOverlay
 import com.neohear.ui.screens.HomeScreen
 import com.neohear.ui.screens.SettingsScreen
+import com.neohear.ui.screens.CryAnalysisScreen
+import com.neohear.ui.cry.CryAnalysisViewModel
 import com.neohear.ui.theme.NeoHearTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -84,6 +86,7 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector)
 const val ROUTE_SCREENING = "screening"
 const val ROUTE_QUESTIONNAIRE = "questionnaire"
 const val ROUTE_REFERRAL_DETAIL = "referral_detail/{referralId}"
+const val ROUTE_CRY_ANALYSIS = "cry_analysis"
 
 val bottomNavItems = listOf(
     Screen.Home,
@@ -96,7 +99,8 @@ val bottomNavItems = listOf(
 private val hideBottomBarRoutes = setOf(
     ROUTE_SCREENING,
     ROUTE_QUESTIONNAIRE,
-    ROUTE_REFERRAL_DETAIL
+    ROUTE_REFERRAL_DETAIL,
+    ROUTE_CRY_ANALYSIS
 )
 
 @Composable
@@ -190,6 +194,9 @@ fun MainScreen(nativePing: String) {
                     },
                     onStartQuestionnaire = {
                         navController.navigate(ROUTE_QUESTIONNAIRE)
+                    },
+                    onStartCryAnalysis = {
+                        navController.navigate(ROUTE_CRY_ANALYSIS)
                     }
                 )
             }
@@ -255,6 +262,17 @@ fun MainScreen(nativePing: String) {
                 RiskQuestionnaireScreen(
                     viewModel = questionnaireViewModel,
                     onNavigateBack = { navController.popBackStack() }
+                )
+            }
+            composable(ROUTE_CRY_ANALYSIS) {
+                val cryAnalysisViewModel: CryAnalysisViewModel = viewModel(
+                    factory = CryAnalysisViewModel.Factory(
+                        context.applicationContext as android.app.Application
+                    )
+                )
+                CryAnalysisScreen(
+                    onBack = { navController.popBackStack() },
+                    viewModel = cryAnalysisViewModel
                 )
             }
             composable(

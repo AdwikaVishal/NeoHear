@@ -161,13 +161,15 @@ fun ScreeningScreenWrapper(
 fun PatientEntryScreen(
     state: ScreeningState.PatientEntry,
     isDemoMode: Boolean,
-    onDisplayNameChange: (String) -> Unit,
-    onDobChange: (Date) -> Unit,
-    onEarChange: (Ear) -> Unit,
-    onSubmit: () -> Unit,
+    onSubmit: (name: String, dob: Date, ear: Ear) -> Unit,
     onBack: () -> Unit
 ) {
+    var name by remember { mutableStateOf(state.displayName) }
+    var selectedDob by remember { mutableStateOf(state.dob) }
+    var selectedEar by remember { mutableStateOf(state.ear) }
     var showDatePicker by remember { mutableStateOf(false) }
+    var nameError by remember { mutableStateOf<String?>(null) }
+    var dobError by remember { mutableStateOf<String?>(null) }
     val dateFormat = remember { SimpleDateFormat("dd MMM yyyy", Locale.getDefault()) }
 
     ScreeningScreenWrapper(
@@ -187,31 +189,32 @@ fun PatientEntryScreen(
                 fontWeight = FontWeight.Bold
             )
 
-            // Display name
             OutlinedTextField(
-                value = state.displayName,
-                onValueChange = onDisplayNameChange,
+                value = name,
+                onValueChange = {
+                    name = it
+                    nameError = null
+                },
                 label = { Text("Baby name or ID") },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                isError = state.errors.containsKey("name"),
-                supportingText = state.errors["name"]?.let { err -> { Text(err) } }
+                isError = nameError != null,
+                supportingText = nameError?.let { err -> { Text(err) } }
             )
 
-            // DOB
             OutlinedButton(
                 onClick = { showDatePicker = true },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = if (state.dob != null) dateFormat.format(state.dob)
+                    text = if (selectedDob != null) dateFormat.format(selectedDob!!)
                     else "Select date of birth",
                     modifier = Modifier.fillMaxWidth()
                 )
             }
-            if (state.errors.containsKey("dob")) {
+            if (dobError != null) {
                 Text(
-                    text = state.errors["dob"]!!,
+                    text = dobError!!,
                     color = MaterialTheme.colorScheme.error,
                     fontSize = 12.sp
                 )
@@ -224,7 +227,8 @@ fun PatientEntryScreen(
                     confirmButton = {
                         TextButton(onClick = {
                             datePickerState.selectedDateMillis?.let { millis ->
-                                onDobChange(Date(millis))
+                                selectedDob = Date(millis)
+                                dobError = null
                             }
                             showDatePicker = false
                         }) {
@@ -241,7 +245,6 @@ fun PatientEntryScreen(
                 }
             }
 
-            // Ear selector
             Text(
                 text = "Which ear to test?",
                 fontSize = 16.sp,
@@ -256,12 +259,12 @@ fun PatientEntryScreen(
                         Ear.L -> "Left (L)"
                         Ear.R -> "Right (R)"
                     }
-                    val selected = state.ear == ear
+                    val chipSelected = selectedEar == ear
                     FilterChip(
-                        selected = selected,
-                        onClick = { onEarChange(ear) },
+                        selected = chipSelected,
+                        onClick = { selectedEar = ear },
                         label = { Text(label) },
-                        leadingIcon = if (selected) {
+                        leadingIcon = if (chipSelected) {
                             { Icon(Icons.Default.Check, contentDescription = null, modifier = Modifier.size(18.dp)) }
                         } else null,
                         modifier = Modifier.weight(1f),
@@ -275,7 +278,21 @@ fun PatientEntryScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Button(
-                onClick = onSubmit,
+                onClick = {
+                    val trimmedName = name.trim()
+                    var hasError = false
+                    if (trimmedName.isBlank()) {
+                        nameError = "Name is required"
+                        hasError = true
+                    }
+                    if (selectedDob == null) {
+                        dobError = "Date of birth is required"
+                        hasError = true
+                    }
+                    if (!hasError) {
+                        onSubmit(trimmedName, selectedDob!!, selectedEar)
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
@@ -1046,10 +1063,9 @@ fun ScreeningFlow(
                 PatientEntryScreen(
                     state = currentState,
                     isDemoMode = isDemoMode,
-                    onDisplayNameChange = viewModel::updateDisplayName,
-                    onDobChange = viewModel::updateDob,
-                    onEarChange = viewModel::updateEar,
-                    onSubmit = viewModel::submitPatientEntry,
+                    onSubmit = { name, dob, ear ->
+                        viewModel.submitPatientDetails(name, dob, ear)
+                    },
                     onBack = viewModel::goBack
                 )
             }

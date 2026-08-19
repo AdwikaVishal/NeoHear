@@ -55,5 +55,19 @@ double computeRms(const float* data, int len);
  */
 double computeNoiseFloorRms(const float* data, int len);
 
+/**
+ * EXPERIMENTAL — Cry acoustic feature extraction.
+ *
+ * Analyzes a normalized float PCM buffer (-1..1) and extracts
+ * pitch, energy, jitter, shimmer, voicing ratio, and risk flags.
+ *
+ * @param audio       Input PCM samples normalized to [-1, 1].
+ * @param numSamples  Number of samples in the buffer.
+ * @param sampleRate  Sampling rate in Hz.
+ * @param out         Output array of 7 floats:
+ *                    [avgPitchHz, pitchStdDev, avgEnergyDb, jitter, shimmer, voicingRatio, riskFlags].
+ */
+void analyzeCry(const float* audio, int numSamples, int sampleRate, float* out);
+
 }  // namespace dsp
 }  // namespace nehear
